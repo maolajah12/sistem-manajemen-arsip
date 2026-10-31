@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
     {
         if (env('APP_ENV') === 'production') {
             app()->useStoragePath(env('APP_STORAGE', '/tmp/storage'));
+            URL::forceScheme('https');
         }
     }
 }
